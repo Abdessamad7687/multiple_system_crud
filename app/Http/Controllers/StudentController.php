@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -11,7 +12,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $Students = Student::latest()->paginate(5);
+        return view('student.index', compact('Students'));
     }
 
     /**
@@ -19,7 +21,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('student.create');
     }
 
     /**
@@ -27,7 +29,19 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required|unique:students',
+            'phone' => 'required',
+        ]);
+        $Student = new Student();
+        $Student->firstname = $request->firstname;
+        $Student->lastname = $request->lastname;
+        $Student->email = $request->email;
+        $Student->phone = $request->phone;
+        $Student->save();
+        return redirect('/students')->with('msg', 'Student created successfully');
     }
 
     /**
@@ -35,7 +49,8 @@ class StudentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $Student = Student::findOrFail($id);
+        return view('student.show', compact('Student'));
     }
 
     /**
@@ -43,7 +58,8 @@ class StudentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $Student = Student::findOrFail($id);
+        return view('student.edit', compact('Student'));
     }
 
     /**
@@ -51,7 +67,15 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+        ]);
+        $Student = Student::findOrfail($id);
+        $Student->update($request->all());
+        return redirect('/students');
     }
 
     /**
@@ -59,6 +83,8 @@ class StudentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $Student = Student::findOrfail($id);
+        $Student->delete();
+        return back();
     }
 }

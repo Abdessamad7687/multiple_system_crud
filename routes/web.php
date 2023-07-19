@@ -2,6 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function() {
+use App\Http\Controllers\StudentController;
+
+Route::get('/', function(){
     return view('layout.base');
-});
+})->name('home');
+
+Route::get('/students', [StudentController::class, 'index'])->name('student.index');
+Route::get('/students/create', [StudentController::class, 'create'])->name('student.create');
+Route::post('/students/create', [StudentController::class, 'store'])->name('student.store');
+
+Route::get('/students/{id}', [StudentController::class, 'edit'])->name('student.edit');
+Route::put('/students/{id}', [StudentController::class, 'update'])->name('student.update');
+Route::delete('/students/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
+Route::get('/students/view/{id}', [StudentController::class, 'show'])->name('student.show');
