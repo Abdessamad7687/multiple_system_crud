@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\EmployeController;
 
 
 
@@ -24,3 +25,6 @@ Route::get('/students/view/{id}', [StudentController::class, 'show'])->name('stu
 
 // product routes
 Route::resource('products', ProductController::class);
+
+//employe routes
+Route::resource('employes', EmployeController::class);
