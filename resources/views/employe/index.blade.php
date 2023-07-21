@@ -23,12 +23,16 @@
         <tbody>
             @foreach($Employes as $Employe)
                 <tr>
+                    <td class="border px-4 py-2">{{ $Employe['id'] }}</td>
                     <td class="border px-4 py-2">{{ $Employe['firstname'] }}</td>
                     <td class="border px-4 py-2">{{ $Employe['lastname'] }}</td>
                     <td class="border px-4 py-2">{{ $Employe['email'] }}</td>
                     <td class="border px-4 py-2">{{ $Employe['address'] }}</td>
 
                     <td class="border px-4 py-2">{{ $Employe['phone'] }}</td>
+                    <td>
+                        <img src="/images/{{$Employe->image}}" alt="image" srcset="">
+                    </td>
                     <td class="border px-4 py-2">
                         <button class="bg-blue-500 text-white py-1 px-2 rounded">
                             <a href="{{ route('employes.edit' , $Employe->id) }}" class="text-white">Edit</a>

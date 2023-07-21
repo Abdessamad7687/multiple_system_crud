@@ -36,17 +36,17 @@ class EmployeController extends Controller
             'email' => 'required|unique:employes',
             'address' => 'required',
             'phone' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image' => 'required'
         ]);
         if($request->hasFile('image')){
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images'), $imageName);
+            $image->move('/public/images', $imageName);
         }
 
         Employe::create($request->all());
 
-        return redirect('/');
+        return redirect('/employes');
 
     }
 
@@ -73,12 +73,14 @@ class EmployeController extends Controller
     {
         //
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $Employe = Employe::findOrFail($id);
+        $Employe->delete();
+        return back();
     }
 }

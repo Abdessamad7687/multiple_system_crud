@@ -60,9 +60,7 @@
         <div class="mb-4">
             <label for="image" class="block font-medium text-gray-700">Image</label>
             <input type="file" name="image" id="image" class="border-gray-300 py-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border rounded-md shadow-sm p-2">
-            @error('image')
-                <span class="text-red-500 text-sm">{{ $message }}</span>
-            @enderror
+      
         </div>
 
 
