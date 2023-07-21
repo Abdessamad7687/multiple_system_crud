@@ -38,11 +38,13 @@ class EmployeController extends Controller
             'phone' => 'required',
             'image' => 'required'
         ]);
+        
         if($request->hasFile('image')){
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move('/public/images', $imageName);
-        }
+            $image->move(public_path('/images'), $imageName);
+            $request->image = $imageName;
+        }   
 
         Employe::create($request->all());
 
@@ -73,7 +75,7 @@ class EmployeController extends Controller
     {
         //
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */

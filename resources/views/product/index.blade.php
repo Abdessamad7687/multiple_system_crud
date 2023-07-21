@@ -7,6 +7,9 @@
     </div>
 
     <table class="w-3/4 mx-auto">
+    <div class="w-3/4 mx-auto">
+        {{ $Products->links()  }}
+    </div>
         <thead>
             <tr>
                 <th class="px-4 py-2">ID</th>

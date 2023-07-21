@@ -4,7 +4,7 @@
 <div class="p-4">
         <h3 class="text-xl font-bold mb-4 text-center my-4 ">Employes crud Program</h3>
         <a href="{{ route('employes.create') }}" class="bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-700">Add new Employe</a>
-    </div>
+</div>
 
     <table class="w-3/4 mx-auto">
         <thead>
@@ -31,7 +31,7 @@
 
                     <td class="border px-4 py-2">{{ $Employe['phone'] }}</td>
                     <td>
-                        <img src="/images/{{$Employe->image}}" alt="image" srcset="">
+                        <img src="/images/{{ $Employe->image }}" alt="image" width="100" height="100" srcset="">
                     </td>
                     <td class="border px-4 py-2">
                         <button class="bg-blue-500 text-white py-1 px-2 rounded">

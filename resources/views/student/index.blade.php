@@ -3,10 +3,13 @@
 
 <div class="p-4">
         <h3 class="text-xl font-bold mb-4 text-center my-4 ">Students crud Program</h3>
-        <a href="{{ route('student.create') }}" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700">Add new Student</a>
+        <a href="{{ route('student.create') }}" class="w-3/4 mx-auto bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700">Add new Student</a>
     </div>
 
     <table class="w-3/4 mx-auto">
+    <div class="w-3/4 mx-auto">
+        {{ $Students->links()  }}
+    </div>
         <thead>
             <tr>
                 <th class="px-4 py-2">ID</th>
@@ -42,7 +45,9 @@
                     </td>
                 </tr>
             @endforeach
+            
         </tbody>
+        
     </table>
 
 
