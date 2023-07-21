@@ -42,7 +42,9 @@
   </div>
 </nav>
 
-
+<script>
+  const navbarDropdown = document.getElementById("navbar-dropdown");
+</script>
 
 </body>
 </html>
