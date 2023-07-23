@@ -33,11 +33,9 @@ class ProductController extends Controller
             'noun' => 'required',
             'quantity' => 'required',
             'price' => 'required'
-        ]);
-
-        //$newProduct = new Product();  
+        ]);  
         Product::create($request->all());
-        return redirect('/products')->with('message', 'Product added ');
+        return redirect('/products')->with('message', 'Product added successfully');
     }
 
     /**
