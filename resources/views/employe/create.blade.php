@@ -4,7 +4,7 @@
 @section('content')
 <div class="w-1/2 mx-auto mt-5">
     <h1 class="text-center">Create Employe</h1>
-    <form action="{{ route('employes.store') }}" method="POST" class="max-w-md mx-auto">
+    <form action="{{ route('employes.store') }}" method="POST" class="max-w-md mx-auto" enctype="multipart/form-data">
         @csrf
         <!-- firstname -->
         <div class="mb-4">
