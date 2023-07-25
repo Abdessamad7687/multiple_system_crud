@@ -31,7 +31,7 @@
 
                     <td class="border px-4 py-2">{{ $Employe['phone'] }}</td>
                     <td>
-                        <img src="/images/{{ $Employe->image }}" alt="image" width="100" height="100" srcset="">
+                        <img src="{{ asset('images/' . $Employe->image) }}" alt="image" width="100" height="100" srcset="">    
                     </td>
                     <td class="border px-4 py-2">
                         <button class="bg-blue-500 text-white py-1 px-2 rounded">

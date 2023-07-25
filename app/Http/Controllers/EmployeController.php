@@ -41,9 +41,9 @@ class EmployeController extends Controller
         
         if($request->hasFile('image')){
             $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('/images'), $imageName);
+            $imageName = rand(1, 1000) . '.' . $image->getClientOriginalExtension();
             $request->image = $imageName;
+            $image->move(public_path('/images'), $imageName);
         }   
 
         Employe::create($request->all());
@@ -65,7 +65,8 @@ class EmployeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $Employe = Employe::findOrFail($id);
+        return view('employe.edit', ['Employe' => $Employe]);
     }
 
     /**
@@ -73,7 +74,23 @@ class EmployeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $Employe = Employe::findOrFail($id);
+        $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'image' => 'required'
+        ]);
+        
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('/images'), $imageName);
+            $request->image = $imageName;
+        }   
+        return redirect('/employes');
     }
 
     /**

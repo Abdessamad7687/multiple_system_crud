@@ -7,8 +7,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\EmployeController;
 
 
-
-
 Route::get('/', function(){
     return view('layout.index');
 })->name('home');
