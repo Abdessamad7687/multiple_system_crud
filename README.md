@@ -3,5 +3,4 @@
 <br>
 <img src="https://github.com/Abdessamad7687/multiple_system_crud/blob/main/public/images/products.jpg">
 <br>
-<br>
-<img src="https://github.com/Abdessamad7687/multiple_system_crud/blob/main/public/images/create-student.jpg">
+
