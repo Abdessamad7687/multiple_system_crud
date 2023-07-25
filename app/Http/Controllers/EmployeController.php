@@ -42,8 +42,8 @@ class EmployeController extends Controller
         if($request->hasFile('image')){
             $image = $request->file('image');
             $imageName = rand(1, 1000) . '.' . $image->getClientOriginalExtension();
-            $request->image = $imageName;
             $image->move(public_path('/images'), $imageName);
+            $request->image = $imageName;
         }   
 
         Employe::create($request->all());
@@ -57,7 +57,8 @@ class EmployeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $Employe = Employe::findOrFail($id);
+        return view('employe.show', ['Employe' => $Employe]);
     }
 
     /**
