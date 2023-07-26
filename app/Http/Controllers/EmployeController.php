@@ -36,16 +36,15 @@ class EmployeController extends Controller
             'email' => 'required|unique:employes',
             'address' => 'required',
             'phone' => 'required',
-            'image' => 'required'
+            'image' => 'required|file'
         ]);
         
         if($request->hasFile('image')){
             $image = $request->file('image');
-            $imageName = rand(1, 1000) . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('/images'), $imageName);
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $request->merge(['image' => $imageName]);
             $request->image = $imageName;
         }   
-
         Employe::create($request->all());
 
         return redirect('/employes');
